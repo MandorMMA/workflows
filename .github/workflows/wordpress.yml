@@ -13,15 +13,15 @@ name: 'Build infra'
 runs-on: terraform-servers.tf
 
 steps:
-- name: 'Checkout the code'
- uses: actions/checkout@v2
+name: Checkout the code
+uses: actions/checkout@v2
  
-- name: Configure .env
+name: Configure .env
 run: |
 cp .env.ci.template .env
 
-- name: Construct infrasctructure
- - name: Clean up
+name: Construct infrasctructure
+name: Clean up
  if: ${{ always() }}
  run: |
  rm -vrf *
