@@ -8,11 +8,6 @@ TF_VAR_env_name: ${{ github.event.inputs.TF_VAR_env_name }}
 TF_VAR_backend_s3_bucket: mandor-wordpress-bucket
 TF_VAR_BACKEND_s3_region: eu-central-1
 
-
-on: 
-branches:
--master
-
 jobs:
 build infra:
 name: 'Build Infra'
