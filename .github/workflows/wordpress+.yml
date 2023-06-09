@@ -1,0 +1,31 @@
+name: Pipeline-to-AWS
+env:
+AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+AWS_SECRET_KEY_ID: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+AWS_DEFAULT_REGION: eu-central-1
+TF_VAR_project_name: ${{ github.event.inputs.TF_VAR_project_name }}
+TF_VAR_env_name: ${{ github.event.inputs.TF_VAR_env_name }}
+TF_VAR_backend_s3_bucket: mandor-wordpress-bucket
+TF_VAR_BACKEND_s3_region: eu-central-1
+
+
+on: 
+branches:
+-main
+
+jobs:
+build infra:
+name: 'Build Infra'
+runs on: terraform-servers.tf
+steps: Checkout the code
+uses: actions/checkout@v2
+
+name: Configure .env
+run: |
+cp .env.ci.template .env
+
+name: Construct infrastructure
+name: Clean up
+if: ${{ always() }}
+run: |
+rm -vrf *
