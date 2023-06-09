@@ -19,4 +19,4 @@ name: Construct infrastructure
 name: Clean up
 if: ${{ always() }}
 run: |
-rm -vrf*
+rm-vrf*
