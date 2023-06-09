@@ -10,7 +10,7 @@ TF_VAR_BACKEND_s3_region: eu-central-1
 
 jobs:
 build infra:
-name: 'Build Infra'
+name: 'build infra'
 runs on: terraform-servers.tf
 steps: Checkout the code
 uses: actions/checkout@v2
@@ -19,4 +19,4 @@ name: Construct infrastructure
 name: Clean up
 if: ${{ always() }}
 run: |
-'rm-vrf*'
+ rm-vrf*
