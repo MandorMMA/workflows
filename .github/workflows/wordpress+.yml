@@ -10,7 +10,7 @@ TF_VAR_BACKEND_s3_region: eu-central-1
 
 jobs:
 build infra:
-name: 'Build infra'
+name:'Build infra'
 runs on: terraform-servers.tf
 steps: Checkout the code
 uses: actions/checkout@v2
