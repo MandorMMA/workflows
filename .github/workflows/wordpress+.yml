@@ -15,10 +15,6 @@ runs on: terraform-servers.tf
 steps: Checkout the code
 uses: actions/checkout@v2
 
-name: Configure .env
-run: |
-cp .env.ci.template .env
-
 name: Construct infrastructure
 name: Clean up
 if: ${{ always() }}
