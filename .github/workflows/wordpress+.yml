@@ -17,5 +17,5 @@ steps:
 uses: actions/checkout@v2
 -name: Terraform Apply
 run: |
-terraform init
-terraform apply -auto-approve
+ terraform init
+ terraform apply -auto-approve
