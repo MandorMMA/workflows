@@ -13,9 +13,9 @@ jobs:
  name: 'Build infra'
 runs on: terraform-servers.tf
 steps: 
--name: Checkout the code
+- name: Checkout the code
 uses: actions/checkout@v2
- -name: Terraform Apply
+-name: Terraform Apply
 run: |
  terraform init
  terraform apply -auto-approve
