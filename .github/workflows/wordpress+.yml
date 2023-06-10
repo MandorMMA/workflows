@@ -13,7 +13,7 @@ jobs:
 runs on: terraform-servers.tf
 steps: Checkout the code
 uses: actions/checkout@v2
-name: 'Terraform Apply
+name: Terraform Apply
 steps: 
 terraform init
 terraform apply -auto-approve
