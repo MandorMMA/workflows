@@ -13,9 +13,9 @@
   name: 'Build infra'
   runs on: terraform-servers.tf
  steps: 
- - name: Checkout the code
-  uses: actions/checkout@v2
- - name: Terraform
+ -name: Checkout the code
+   uses: actions/checkout@v2
+ -name: Terraform
  run: |
   terraform init
   terraform apply -auto-approve
