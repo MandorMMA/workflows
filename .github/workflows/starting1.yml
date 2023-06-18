@@ -1,0 +1,28 @@
+name: Starting-AWS-Infrastructure
+env:
+  AWS_DEFAULT_REGION: eu-central-1
+  TF_VAR_backend_s3_bucket: mandor-wordpress-bucket
+  TF_VAR_backend_s3_region: eu-central-1
+
+
+on: pull_request
+
+jobs:
+  build:
+  
+    runs-on: terraform-servers.tf
+    
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v3
+    - name: Terraform-start
+      run: |
+        terraform init
+        terraform apply -auto-approve
+        
+    - name: Configure my AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.MY_AWS_ACCESS_KEY }}
+        aws-access-secret-key-id: ${{ secrets.MY_AWS_SECRET_KEY }}
+        aws-region: ${{ env.AWS_DEFAULT_REGION }}
