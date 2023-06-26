@@ -5,18 +5,27 @@ env:
   TF_VAR_backend_s3_region: eu-central-1
 
 
-on: pull_request
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   build:
   
-    runs-on: terraform-servers.tf
+    runs-on: ubuntu-latest
+    
+defaults:
+  run:
+    shell: bash
     
     steps:
     - name: Checkout the code
       uses: actions/checkout@v3
     - name: Terraform-start
-      run: |
+      uses: terraform-servers.tf
+        
         terraform init
         terraform apply -auto-approve
         
