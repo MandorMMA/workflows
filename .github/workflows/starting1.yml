@@ -24,7 +24,7 @@ defaults:
     - name: Checkout the code
       uses: actions/checkout@v3
     - name: Terraform-start
-      uses: terraform-servers.tf
+      env: terraform-servers.tf
         
         terraform init
         terraform apply -auto-approve
