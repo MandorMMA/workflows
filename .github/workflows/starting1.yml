@@ -12,8 +12,8 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-  
+  terraform:
+    name: 'terraform'  
     runs-on: ubuntu-latest
     
 defaults:
@@ -21,14 +21,20 @@ defaults:
     shell: bash
     
     steps:
-    - name: Checkout the code
+    - name: Checkout
       uses: actions/checkout@v3
-    - name: Terraform-start
+    
+    - name: Terraform Init
       env: terraform-servers.tf
-      steps:  
-        terraform init
-        terraform apply -auto-approve
-        
+      run:  
+        terraform init -input=false
+    
+    - name: Terraform Plan
+      run: terraform plan -input=false
+      
+    - name: Terraform Apply
+      run: terraform apply -auto-approve -input=false
+                
     - name: Configure my AWS Credentials
       uses: aws-actions/configure-aws-credentials@v2
       with:
