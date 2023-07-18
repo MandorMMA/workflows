@@ -25,7 +25,7 @@ defaults:
       uses: actions/checkout@v3
     
     - name: Terraform Init
-      env: terraform-servers.tf
+      env: production
       run:  
         terraform init -input=false
     
